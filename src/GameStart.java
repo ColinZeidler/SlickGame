@@ -15,8 +15,7 @@ public class GameStart extends BasicGame{
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		bgImage.draw(0, 0);
-		g.setColor(Color.orange);
-		g.fillOval((int)player2.getX(), (int)player2.getY(), 20, 80);
+		p2Char.draw((float)player2.getX(), (float)player2.getY());
 		p1Char.draw((float)player1.getX(), (float)player1.getY());
 		
 	}
@@ -49,8 +48,11 @@ public class GameStart extends BasicGame{
 			//p1 move left
 			player1.setX(player1.getX() - 0.4 * delta);
 		}
-		if(input.isKeyDown(Input.KEY_W)) {
+		if(input.isKeyDown(Input.KEY_W) && !player1.inAir()) {
 			//p1 Jump
+			player1.startJump();
+			player1.setYSpeed(10);
+			player1.setY(player1.getY() - 1);
 		}
 		
 		if(input.isKeyDown(Input.KEY_LEFT)) {
@@ -61,10 +63,29 @@ public class GameStart extends BasicGame{
 			//p2 move right
 			player2.setX(player2.getX() + 0.4 * delta);
 		}
-		if(input.isKeyDown(Input.KEY_UP)) {
+		if(input.isKeyDown(Input.KEY_UP) && !player2.inAir()) {
 			//p2 jump
+			player2.startJump();
+			player2.setYSpeed(10);
+			player2.setY(player2.getY() - 1);
 		}
 		
+		if(player1.getY() < 500) {
+			System.out.println(player1.getYSpeed());
+			player1.setY(player1.getY() - player1.getYSpeed());		//move the player by their jump speed
+			player1.setYSpeed(player1.getYSpeed() - 0.016*delta);	//apply the force of gravity on the player 9.8m/s / 60fps = 0.16
+		} else { 
+			player1.setYSpeed(0);
+			player1.endJump();
+		}
+		
+		if(player2.getY() < 500) {
+			player2.setY(player2.getY() - player2.getYSpeed());		//move the player by their jump speed
+			player2.setYSpeed(player2.getYSpeed() - 0.016*delta);	//apply the force of gravity on the player 9.8m/s / 60fps = 0.16
+		} else {
+			player2.setYSpeed(0);
+			player2.endJump();
+		}
 	}
 
 }

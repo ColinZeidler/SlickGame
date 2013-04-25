@@ -38,24 +38,4 @@ public class Battle {
 		defender.hurt(damage);
 		
 	}
-	
-	public void PlayerMove(Fighter player) {
-		if(player.isMoving()) {
-			if(player.getXSpeed() < 10)
-				player.xAccel();
-		}
-		//vertical acceleration here
-		player.setY(player.getY() - player.getYSpeed());
-		if (player.getY() < 600) {
-			player.yFall();
-		} else {
-			player.yStop();
-			player.endJump();
-		}
-		//horizontal movement
-		player.setX(player.getX() + (player.getXSpeed() * player.getxDir()));
-		if (player.getXSpeed() != 0) {
-			player.xDecel();
-		}
-	}
 }

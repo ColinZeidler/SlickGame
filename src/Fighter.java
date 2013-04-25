@@ -16,29 +16,19 @@ public class Fighter {
 		private boolean air;
 		private int width; //width of the character model.
 		private double xPos, yPos;
-		private int xSpeed, ySpeed;	//used for acceleration
-		private int xDir;	//1 is forwards, -1 is backwards
+		private double ySpeed;	//used for acceleration
 		private boolean disabled; //for Character effects
 		private boolean moving;
 		
 		//set/get methods for Xpos Ypos
 		public void setX(double x){	xPos = x;	}
 		public void setY(double y){	yPos = y;	}
-		public void setDirF(){	xDir = 1;	}
-		public void setDirB(){	xDir = -1;	}
 		
 		//use for player acceleration in vertical and horizontal directions
-		public void setYSpeed(int y){ ySpeed = y; }	//set a speed relative to how high the player will jump
-		public void yFall(){	ySpeed--;	}	//player will slow down and then fall vertically
+		public void setYSpeed(double y){ ySpeed = y;}	//set a speed relative to how high the player will jump
+		public double getYSpeed(){	return ySpeed;	}
 		public void yStop(){	ySpeed = 0;	}
-		public void xAccel(){	xSpeed+= 3;	}	//player will walk faster
-		public void xDecel(){	xSpeed--;	}	//player will be slowed down
-		public void xStop(){	xSpeed = 0;	}
-		public void setMoving(boolean move){	moving = move;	}
 		
-		public int getxDir(){	return xDir;	}
-		public int getYSpeed(){ return ySpeed;	}
-		public int getXSpeed(){ return xSpeed;	}
 		public double getX(){	return xPos;	}
 		public double getY(){	return yPos;	}
 		
@@ -97,7 +87,6 @@ public class Fighter {
 			width = 75; //just for testing changed to width of image?
 			
 			description = "This is a test, this is a test this is a test\nThis is s new line test. Testing testing testing";
-			xDir = 1;
 		}
 		
 		public void hurt(int d){
