@@ -1,9 +1,9 @@
 import org.newdawn.slick.*;
-import org.newdawn.slick.Graphics;
 public class GameStart extends BasicGame{
 	private Fighter player1, player2;
 	private Battle battle;
-	private Image p1Char, p2Char, bgImage;
+	private double p1MaxLife, p2MaxLife;
+	private Image p1Char, p2Char, bgImage, health, health2;
 
 	public GameStart(Fighter p1, Fighter p2, Battle b) throws SlickException {
 		super("Hello World");
@@ -13,10 +13,21 @@ public class GameStart extends BasicGame{
 	}
 
 	@Override
-	public void render(GameContainer gc, Graphics g) throws SlickException {
+	public void render(GameContainer gc, org.newdawn.slick.Graphics g) throws SlickException {
 		bgImage.draw(0, 0);
+		//players
 		p2Char.draw((float)player2.getX(), (float)player2.getY());
 		p1Char.draw((float)player1.getX(), (float)player1.getY());
+		
+		//health Bars
+		g.setColor(Color.red);
+		double p1HealthBar = 610 * (player1.getLife() / p1MaxLife);
+		double p2HealthBar = 610 * (player2.getLife() / p2MaxLife);
+		g.fillRect((int) (640-p1HealthBar), 25, (int) p1HealthBar, 15);
+		g.fillRect(650, 25, (int) p2HealthBar, 15);
+		health.draw(25, 20);
+		health2.draw(645, 20);
+		
 		
 	}
 
@@ -28,12 +39,17 @@ public class GameStart extends BasicGame{
 		player2.setX(700);
 		player2.setY(500);
 		
+		p1MaxLife = player1.getLife();
+		p2MaxLife = player2.getLife();
+		
 		gc.setMinimumLogicUpdateInterval(16);
 		gc.setMaximumLogicUpdateInterval(16);
 
 		p1Char = new Image("res/filler.png");
 		p2Char = new Image("res/filler.png");
 		bgImage = new Image("res/Background.png");
+		health = new Image("res/Health.png");
+		health2 = health.getFlippedCopy(true, false);
 	}
 
 	@Override
@@ -73,17 +89,19 @@ public class GameStart extends BasicGame{
 		if(player1.getY() < 500) {
 			System.out.println(player1.getYSpeed());
 			player1.setY(player1.getY() - player1.getYSpeed());		//move the player by their jump speed
-			player1.setYSpeed(player1.getYSpeed() - 0.016*delta);	//apply the force of gravity on the player 9.8m/s / 60fps = 0.16
+			player1.setYSpeed(player1.getYSpeed() - 0.032*delta);	//apply the force of gravity on the player 9.8m/s / 60fps = 0.16
 		} else { 
 			player1.setYSpeed(0);
+			player1.setY(500);
 			player1.endJump();
 		}
 		
 		if(player2.getY() < 500) {
 			player2.setY(player2.getY() - player2.getYSpeed());		//move the player by their jump speed
-			player2.setYSpeed(player2.getYSpeed() - 0.016*delta);	//apply the force of gravity on the player 9.8m/s / 60fps = 0.16
+			player2.setYSpeed(player2.getYSpeed() - 0.032*delta);	//apply the force of gravity on the player 9.8m/s / 60fps = 0.16
 		} else {
 			player2.setYSpeed(0);
+			player2.setY(500);
 			player2.endJump();
 		}
 	}
