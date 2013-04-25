@@ -1,10 +1,11 @@
 import org.newdawn.slick.*;
+import org.newdawn.slick.Graphics;
 public class GameStart extends BasicGame{
 	private Fighter player1, player2;
 	private Battle battle;
 	private Image p1Char, p2Char, bgImage;
 
-	public GameStart(Fighter p1, Fighter p2, Battle b) {
+	public GameStart(Fighter p1, Fighter p2, Battle b) throws SlickException {
 		super("Hello World");
 		player1 = p1;
 		player2 = p2;
@@ -13,11 +14,10 @@ public class GameStart extends BasicGame{
 
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
-		g.drawString("Hello World", 100, 100);
-		g.setColor(Color.gray);
-		g.fillOval((int)player1.getX(), (int)player1.getY(), 20, 80);
+		bgImage.draw(0, 0);
 		g.setColor(Color.orange);
 		g.fillOval((int)player2.getX(), (int)player2.getY(), 20, 80);
+		p1Char.draw((float)player1.getX(), (float)player1.getY());
 		
 	}
 
@@ -31,6 +31,10 @@ public class GameStart extends BasicGame{
 		
 		gc.setMinimumLogicUpdateInterval(16);
 		gc.setMaximumLogicUpdateInterval(16);
+
+		p1Char = new Image("res/filler.png");
+		p2Char = new Image("res/filler.png");
+		bgImage = new Image("res/Background.png");
 	}
 
 	@Override
