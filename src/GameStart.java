@@ -21,11 +21,11 @@ public class GameStart extends BasicGame{
 		
 		//health Bars
 		g.setColor(Color.red);
-		double p1HealthBar = 610 * (player1.getLife() / p1MaxLife);
+		double p1HealthBar = 610 * (player1.getLife() / p1MaxLife);//calculating the lengths of the health bars
 		double p2HealthBar = 610 * (player2.getLife() / p2MaxLife);
-		g.fillRect((int) (640-p1HealthBar), 25, (int) p1HealthBar, 15);
+		g.fillRect((int) (640-p1HealthBar), 25, (int) p1HealthBar, 15);	//positioning the health bars
 		g.fillRect(650, 25, (int) p2HealthBar, 15);
-		health.draw(25, 20);
+		health.draw(25, 20);	//draw the borders for the health bars
 		health2.draw(645, 20);
 		
 		
