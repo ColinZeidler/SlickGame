@@ -1,4 +1,6 @@
 
+import org.newdawn.slick.*;
+
 public class Ability {
 	
 	//basic damage, name and range
@@ -12,6 +14,8 @@ public class Ability {
 	private boolean dash;
 	private boolean knockback;
 	private boolean heal;
+	
+	private Image [] abilityParticle = new Image[3];
 	
 	
 	public Ability(String n, int d, int r, double c, boolean st, boolean da, boolean kn, boolean h, int mc){

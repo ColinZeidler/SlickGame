@@ -1,3 +1,4 @@
+import org.newdawn.slick.*;
 
 public class Fighter {
 	
@@ -19,6 +20,20 @@ public class Fighter {
 		private double ySpeed;	//used for acceleration
 		private boolean disabled; //for Character effects
 		private boolean moving;
+		
+		//ground images		
+		Image [] charWalk = new Image[2];
+		Image groundAttack;
+		
+		//inAir images
+		Image [] charJump = new Image[5];
+		Image airAttack;
+		
+		//ability casts
+		Image [] charCast1 = new Image[5];
+		Image [] charCast2 = new Image[5];
+		Image [] charCast3 = new Image[5];
+		
 		
 		//set/get methods for Xpos Ypos
 		public void setX(double x){	xPos = x;	}
