@@ -45,7 +45,7 @@ public class GameStart extends BasicGame{
 		gc.setMinimumLogicUpdateInterval(16);
 		gc.setMaximumLogicUpdateInterval(16);
 
-		p1Char = new Image("res/filler.png");
+		p1Char = new Image("res/blueNinja.png");
 		p2Char = new Image("res/filler.png");
 		bgImage = new Image("res/Background.png");
 		health = new Image("res/Health.png");
