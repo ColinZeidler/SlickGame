@@ -4,13 +4,12 @@ public class FighterPool {
 	Fighter [] fighters;
 	
 	public FighterPool(){
-		fighters = new Fighter[5];
+		fighters = new Fighter[4];
 		
 		fighters[0] = fighterA();
 		fighters[1] = fighterB();
 		fighters[2] = fighterC();
 		fighters[3] = fighterD();
-		fighters[4] = fighterE();
 	}
 	
 	public void loadFighters(){
@@ -78,22 +77,6 @@ public class FighterPool {
 		
 		Block block = new Block(2,5);
 		return new Fighter("Air", attacks, abilities, block, 1);
-	}
-	
-	private Fighter fighterE(){
-		
-		BasicAttack [] attacks = new BasicAttack[2];
-		attacks[0] = new BasicAttack("Punch", 5, 10, 1, 1);
-		attacks[1] = new BasicAttack("Kick", 15, 20, 0.5, 2);
-		
-		Ability [] abilities = new Ability[3];
-		abilities[0] = new Ability("Ability ???", 30, 15, 0, true, false, false, false, 10);
-		abilities[1] = new Ability("Ability ???", 30, 15, 0.5, false, true, false, false, 40);
-		abilities[2] = new Ability("Ability ???", 30, 15, 1, false, false, true, false, 90);
-		
-		Block block = new Block(2,5);
-		
-		return new Fighter("Unknown", attacks, abilities, block, 1);
 	}
 
 }

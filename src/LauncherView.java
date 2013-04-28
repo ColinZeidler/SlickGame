@@ -100,8 +100,8 @@ public class LauncherView extends JPanel {
 		p1Character = new JButton[model.length];
 		for (int i = 0; i < p1Character.length; i++) {
 			p1Character[i] = new JButton(model[i].getName());
-			p1Const.gridx = i % 5;			//will reset the position to 0 every 5
-			p1Const.gridy = 1 * (i / 5);	//will make a new line for buttons after each set of 5
+			p1Const.gridx = i % 4;			//will reset the position to 0 every 5
+			p1Const.gridy = 1 * (i / 4);	//will make a new line for buttons after each set of 5
 			p1Const.gridwidth = 1;
 			p1Const.gridheight = 1;
 			p1Const.fill = GridBagConstraints.NONE;
@@ -170,8 +170,8 @@ public class LauncherView extends JPanel {
 		p2Character = new JButton[model.length];
 		for (int i = 0; i < p2Character.length; i++) {
 			p2Character[i] = new JButton(model[i].getName());
-			p2Const.gridx = i % 5;			//will reset the position to 0 every 5
-			p2Const.gridy = 1 * (i / 5);	//will make a new line for buttons after each set of 5
+			p2Const.gridx = i % 4;			//will reset the position to 0 every 5
+			p2Const.gridy = 1 * (i / 4);	//will make a new line for buttons after each set of 5
 			p2Const.gridwidth = 1;
 			p2Const.gridheight = 1;
 			p2Const.fill = GridBagConstraints.NONE;
