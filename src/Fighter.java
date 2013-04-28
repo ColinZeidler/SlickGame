@@ -20,21 +20,89 @@ public class Fighter {
 		private double ySpeed;	//used for acceleration
 		private boolean disabled; //for Character effects
 		private boolean moving;
+		private Image groundAttack, airAttack; 
+		private Image[] charWalk, charJump, charCast1, charCast2, charCast3;
 		
-		//ground images		
-		Image [] charWalk = new Image[2];
-		Image groundAttack;
+		//Set images
+		public void setWalk(String[] src) {
+			charWalk = new Image[src.length];
+			for (int i = 0; i < src.length; i++) {
+				try {
+					charWalk[i] = new Image(src[i]);
+				} catch (SlickException e) {
+					System.out.println(e);
+				}
+			}
+		}
 		
-		//inAir images
-		Image [] charJump = new Image[5];
-		Image airAttack;
+		public void setJump(String[] src) {
+			charJump = new Image[src.length];
+			for (int i = 0; i < src.length; i++) {
+				try {
+					charJump[i] = new Image(src[i]);
+				} catch (SlickException e) {
+					System.out.println(e);
+				}
+			}
+		}
 		
-		//ability casts
-		Image [] charCast1 = new Image[5];
-		Image [] charCast2 = new Image[5];
-		Image [] charCast3 = new Image[5];
+		public void setCast1(String[] src) {
+			charCast1 = new Image[src.length];
+			for (int i = 0; i < src.length; i++) {
+				try {
+					charCast1[i] = new Image(src[i]);
+				} catch (SlickException e) {
+					System.out.println(e);
+				}
+			}
+		}
+		
+		public void setCast2(String[] src) {
+			charCast2 = new Image[src.length];
+			for (int i = 0; i < src.length; i++) {
+				try {
+					charCast2[i] = new Image(src[i]);
+				} catch (SlickException e) {
+					System.out.println(e);
+				}
+			}
+		}
+		
+		public void setCast3(String[] src) {
+			charCast3 = new Image[src.length];
+			for (int i = 0; i < src.length; i++) {
+				try {
+					charCast3[i] = new Image(src[i]);
+				} catch (SlickException e) {
+					System.out.println(e);
+				}
+			}
+		}
+		
+		//Get Images
+		public Image[] getWalk() { return charWalk; }
+		public Image[] getJump() { return charJump; }
+		public Image[] getCast1() { return charCast1; }
+		public Image[] getCast2() { return charCast2; }
+		public Image[] getCast3() { return charCast3; }
 		
 		
+		public Image getGroundAttack() {
+			return groundAttack;
+		}
+
+		public void setGroundAttack(Image groundAttack) {
+			this.groundAttack = groundAttack;
+		}
+
+		public Image getAirAttack() {
+			return airAttack;
+		}
+
+		public void setAirAttack(Image airAttack) {
+			this.airAttack = airAttack;
+		}
+
 		//set/get methods for Xpos Ypos
 		public void setX(double x){	xPos = x;	}
 		public void setY(double y){	yPos = y;	}
